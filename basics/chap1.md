@@ -82,7 +82,7 @@ const int* const ptr = &const_int;
 
 ```
 int i = 5;
-const int* a = &i; //  Here the pointeer variable 'a' can piont to different address ie) a = &j; but it cannot the change its value ie) *a = 10; this will error since it is declared as constant
+const int* a = &i; //  Here the pointeer variable 'a' can piont to different address ie) a = &j; but it cannot the change its value ie) *a = 10 // this will cause error since it is declared as constant
 
 int* const a = &i; // Here pointer variable 'a' cannot point to another address other than 'i' since it is declared as const , but this can change its value by dereferncing it ie) *a = 20; 
 ```
