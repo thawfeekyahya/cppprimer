@@ -114,3 +114,78 @@ For each function C++ defines some variables,
 * \_\_FILE\_\_ => Prints the file name
 * \_\_DATE\_\_ => Prints the date compiled
 * \_\_TIME\_\_ => Prints the time compiled
+
+
+## Function Matching for Overloaded function
+
+When we use overloaded function there 3 steps involved by the compiler to determine the correct function to be called
+
+* Candidate functions
+* Viable functions
+* Best Match
+* Ambiguity
+
+```
+void f();
+void f(int);
+void f(int,int);
+void f(double,double=2.63);
+
+f(5.62);
+
+```
+In the above example the compiler during the __Candidate matching__ phase it ignores the 2 versions of  'f' function 
+
+```
+ void f();
+ void f(int,int);
+```
+Since both of these doesn't match our signature ` f(5.62) `.
+
+In the ***Viable*** functions phase it selects both
+
+```
+ void f(int,int);  // 5.62 can be converted to int type
+ void f(double,double=2.63) // Since only first is mandatory, the compiler selects this as well
+```
+
+During the __Best Match phase__ the compiler selects `f(double,double=2.63)` since this the ideal match for function call `f(5.62)`
+
+
+**Ambiguity** arises when 2 overloaded functions have parameters which can be converted either of the type.
+
+consider the following
+
+```
+mainp(long);
+mainp(float);
+
+mainp(5.62); // This rises ambiguity 
+
+```
+
+### Function Pointer
+
+Function pointer is a pointer to a function , the syntax is as follows
+
+```
+
+bool lengthCompare(const string&, const string&); // A function which returns bool type with 2 parameters of type string class 
+
+bool (*pf)(const string&,const string&); // This creates a function pointer without the function name 
+
+```
+
+> [!NOTE] 
+> the **(\*pf)** function pointer signatue **without** the function name
+
+```
+pf = lengthCompare
+
+or
+
+pf = &lenghtCompare   
+
+pf(); // this will call lengthCompare function via the function pointer pf 
+
+```
