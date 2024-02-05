@@ -177,7 +177,7 @@ bool (*pf)(const string&,const string&); // This creates a function pointer with
 ```
 
 > [!NOTE] 
-> the **(\*pf)** function pointer signatue **without** the function name
+> the **(\*pf)** function pointer signatue __without__ the function name
 
 ```
 pf = lengthCompare
@@ -189,3 +189,107 @@ pf = &lenghtCompare
 pf(); // this will call lengthCompare function via the function pointer pf 
 
 ```
+
+## Mutable Keyword
+
+Sometimes we need to modify a memeber even in a const function, in that case marking the member variable mutable allows us to accomplish that.
+
+```
+class A {
+public:
+	mutable int a;  //Marked as mutable
+	int increment() const { ++a; } // Without marking a as mutable this will throw compile time error.
+}; 
+
+```
+
+## Constructor Initialization Order
+
+Members are initialized in the order as it is declared 
+
+```
+
+Class A {
+	public:
+		A();
+		int i; // Declared first
+		int j; // Declared second
+}
+
+A::A(): j(20), i(j) {  // Appears like j initialized first, But actually i initialized first ( by the order which is declared)
+}
+
+```
+
+## Delegating Constrcutors
+
+If a class has multiple constructors , it can delegate one constructor to another
+
+```
+
+class A {
+	public:
+		A();
+		A(int a);
+		A(int a,int b);
+	
+	private:
+		int j,i;
+};
+
+A::A(): A(0) {  // Delgates to constructor with single Param
+}
+
+A::A(int a):  A(a,0) { //Delegates to constrcutor with double param
+}
+
+A::A(int a,int b): j(a), i(b) {  // No Delegation direct call
+} 
+
+```
+
+
+## Default Constructor with no parameters
+
+When calling a default constructor with no parameter, it should be called without the paraenthesis , otherwise a function will be created instead of the object
+
+```
+
+class ClassA {
+	public:
+	ClassA() = default;
+	int a = 10;
+};
+
+ClassA A(); // Wrong : this creates a function and returns ClassA as object type // NOTE: return object isn't referenced anywhere
+Class A;  // Correct way // Leave the parathesis
+
+```
+
+## Static Keyword in Class
+
+A class can have a member of its same type as Static type or either as a pointer or reference, while this is not possible with normal member variable
+
+```
+
+class Bar { 
+	static Bar mem1; // Okay static member of same type as class
+	Bar* mem2; //Ok Bar as pointer type
+	Bar mem3; //Error , same as class type
+};
+
+```
+
+Also static class variables can act as default variables for a class
+
+```
+
+class A {
+	public:
+		A(char=bkg);
+	private:
+		static const char bkg;
+
+};
+
+`````````````````````````````````
