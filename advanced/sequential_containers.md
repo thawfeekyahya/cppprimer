@@ -1,6 +1,8 @@
 ## Types of sequential containers
 
-* array  // Fixed size, Fast Random Access , Cannot add or remove elements //  [!NOTE] This is a STL array not built-in 
+* array  // Fixed size, Fast Random Access , Cannot add or remove elements //  
+>  [!NOTE] 
+>  This is a STL array not built-in 
 * vector // Flexible size, Fast Random Access , Fast Insert / Delete only at the back
 * deque // Double ended queue , Supports Fast Random Access , Fast insert / delete either at front or back
 * list // Doubly linked list, Bi-directional sequential access, Fast insert / delete at any point in the list
