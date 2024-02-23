@@ -102,7 +102,7 @@ swap(vec1,vec2);
 ```
 
 
-### Add operation inside containers
+## Add operation inside containers
 
 |Operation   |push\_back| push\_front | emplace\_front | emplace\_back | insert | emplace| 
 |:------------:|:------------------:|:--------------:|:-------------------:|:---------:|:---------:|:---------:|
@@ -116,5 +116,70 @@ swap(vec1,vec2);
 ### insert()
 
 The insert operation inserts an element before the inseration point (iterator).
+
+### emplace()
+
+Unlike the operations (push_back, push_front, insert) that involve moving or copying elements into a container, emplace operations (emplace, emplace_front, emplace_back) directly construct objects within the container's managed space using specified constructor arguments, without the need for temporary locations.
+
+```
+vector<SalesData> salesData;
+salesData.emplace("Product",20,100); // Create salesData object directly inside the memory managed by the container.
+---
+salesData.push_back(SalesData("Product",21,300)); // Create in temporary location and then push to container
+```
+
+## Access operations
+
+### front()
+
+returns the first element in the container.
+
+### back()
+
+returns the last element in the container. `NOTE:` end() returns the one past the last element, to get the actual last element the iterator has to be decremented first.
+
+### at(n)
+
+returns the element at the specified index. if index is out of range then `out_of_range` exception is thrown.
+
+## Remove Operations
+
+### pop_back()
+
+Removes the last element in the container, Returns void.
+
+### pop_front()
+
+Removes the first element in the contianer, Returns void.
+
+### erase(it)
+
+Removes the element at given iterator and returns the next element in the container. 
+
+### erase(from_it,to_it)
+
+Deletes the range of elements denoted by start iterator till the end iterator.
+
+### clear()
+
+Removes all the elements in the container.
+
+### reszie()
+
+resizes the given container to the specified length. // *resize() only reduces the length of the container __NOT the capacity__ of the container*
+
+## Container Size Mangement
+
+### shrink_to_fit()
+
+Request reduce the capacity() equal to size() // *Applicable to only ( vector, strings, deque)*
+
+### capacity() 
+
+Retruns the number of elements that vectors can have before reallocation. //  *Applicable to only ( vector, strings)*
+
+### reserve(n) 
+
+Allocate space for atleast n elements. // *Applicable to only ( vector, strings)*
 
 
