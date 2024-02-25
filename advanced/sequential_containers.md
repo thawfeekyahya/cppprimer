@@ -182,4 +182,138 @@ Retruns the number of elements that vectors can have before reallocation. //  *A
 
 Allocate space for atleast n elements. // *Applicable to only ( vector, strings)*
 
+## String Operatrions
 
+**string(char_array,lenght)** //copy of the charcter array till the specified length
+
+**string(string1,start_pos)** //copy the strings from string1 from the starting position start_pos. 
+
+**string(string1,start_pos,length)** // copy the strings from string1 from the starting position start_pos till the specified length
+
+```
+
+    const char* name = "My name is Thawfeek Yahya";
+    string s(name,20);
+    cout<<s<<endl; //output: My name is Thawfeek
+    
+    string s2(s,11);
+    cout<<s2<<endl; //output: Thawfeek
+    
+    string s3(s,3,5); //output: name
+    cout<<s3;
+```
+
+### substr(pos,n)
+
+Returns n strings from the given position of another string.
+
+
+### insert(pos,string_arg)
+
+Inserts the string from the given position . 
+
+```
+string s1("Hello World");
+
+s1.insert(0,"Welcome !");
+
+const char* name = "Thawfeek Yahya";
+
+string last_name;
+last_name.insert(0,name+9);
+```
+
+
+### append(string_args)
+
+appends the given string at the end
+
+### replace(from_pos,length)
+
+replace the string from the given position till the given length 
+
+
+## String Search Operations
+
+**find(args)**
+
+**rfind(args)** // reverse find
+
+**find_first_of(args)**
+
+**find_last_of(args)**
+
+**find_first_not_of(args)**
+
+**find_last_not_of(args)**
+
+
+**string::npos** npos is a static value defined by the string class , it has the value of -1 . This will be returned in search operations when no match is found. Since string class's size value is unsigned , -1 means largest value possible in usigned type
+
+```
+string h1("Thawfeek Yahya Mohamed Mubarak");
+
+string search("wyxz");
+
+string::size_type index = h1.find_first_of(search); // output: 3
+
+index = h1.find("Mohamed"); //ouput: 15
+```
+
+## Adaptor containers for sequential containers
+
+A container adaptor mechanism of making one container act like another. Following are the supported Adaptors for sequential containers
+
+* stack
+* queue
+* prirority_queue
+
+By default stack and queue are implemented to work with deque , But this can be changed by specifiying passing the container type explicitly
+
+```
+stack<int> stk(container); // container is expected to be a deque
+
+stack<int, vector<int>> vec_container; // container is explicityly passed to be of type vector, But this can be changed by specifiying passing the container type explicitly
+
+```
+stack<int> stk(container); // container is expected to be a deque
+
+stack<int, vector<int>> vec_container; // container is explicityly passed to be of type vector, But this can be changed by specifiying passing the container type explicitly
+
+```
+stack<int> stk(container); // container is expected to be a deque
+
+stack<int, vector<int>> vec_container; // container is explicityly passed to be of type vector, But this can be changed by specifiying passing the container type explicitly
+
+```
+stack<int> stk(container); // container is expected to be a deque
+
+stack<int, vector<int>> vec_container; // container is explicityly passed to be of type vector, But this can be changed by specifiying passing the container type explicitly
+
+```
+stack<int> stk(container); // container is expected to be a deque
+
+stack<int, vector<int>> vec_container; // container is explicitly passed to be of type vector
+
+stack<int,vector<int>> sv;
+    
+    for(int i=0; i<10;i++) {
+        sv.push(i);
+    }
+    
+    for(int i=0;i<10;i++) {
+        cout<<sv.top();
+        sv.pop();
+    }
+---
+queue<int, deque<int>> queue_container;
+    
+    for(int i=0;i<10;i++) {
+        queue_container.push(i);
+    }
+    
+    for(int i=0;i<10;i++) {
+        cout<<queue_container.front();
+        queue_container.pop();
+    }
+```
