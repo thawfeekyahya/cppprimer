@@ -14,7 +14,8 @@ equal(ivec.begin(),ivec.end(),ivec2.begin()); // compare each element between th
 
 ```
 
-> [!NOTE] Alogrithms uses functional programming style (f(x)), ie) functions are independent of containers.
+> [!NOTE] 
+> Alogrithms uses functional programming style (f(x)), ie) functions are independent of containers.
 
 
 ### Predicates
@@ -25,7 +26,7 @@ A predicate is an expression that can be supplied as an additional parameter to 
 
 Anonmyous function in C++ is called Lambda expression. The syntax is as follows
 
-`[caputre-list](param1,param2)->returnType { //body of function;}`  here parameter list and return types are optional and cab be omitted.but capture list is mandatory. So the syntax can be shorten to `[capture-list] { //body of the function }`. 
+`[caputre-list](param1,param2)->returnType { //body of function;}`  here parameter list and return types are optional and can be omitted.but capture list is mandatory. So the syntax can be shorten to `[capture-list] { //body of the function }`. 
 
 the capture list is used to capture only non-static variables. static variables can be directly accessed inside lambda without passing to capture list.`
 
