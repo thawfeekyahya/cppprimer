@@ -153,7 +153,7 @@ int value = A(30); //passes 30 to () operator function
 
 ```
 
-## Library Defined Function Objects
+### Library Defined Function Objects
 
 The standard library defines set of operations which is equivalent to arthimetic , relational and logical operators
 
@@ -177,3 +177,46 @@ The standard library defines set of operations which is equivalent to arthimetic
 	* logical_and\<T\>
 	* logical_or\<T\>
 	* logical_not\<T\>
+
+### Function template in functional library.
+
+STL defines a function template where we can assign functions to it.
+
+```
+#include <functional>
+
+int testfun(int a, int b) {
+    return a+b;
+}
+
+function<int(int,int)> f1 = testfun;
+
+f1(); // will call testfunc
+```
+
+
+## Class Inhertiance
+
+### Base class virtual destrcutor
+
+Even though the base class destrcutor does nothing , classes intended for inheritance requries a virtual destrcutor on base classes.
+
+### Private inheritance and `using` keyword
+
+While using private inheritance all the public and protected memebers of the base class becomes private, to access public members of base class while inheriting via private inheritance `using` keyword can be used to access those members.
+
+```
+class A {
+    
+    public:
+        int x = 1;
+    private:
+        int y = 3;
+};
+
+class B : private A {
+    public:
+        using A::x;
+};
+```
+
