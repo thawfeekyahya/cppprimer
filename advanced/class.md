@@ -220,3 +220,16 @@ class B : private A {
 };
 ```
 
+### Inheriting Constructor
+
+We can inherit base class constrcutor by utlilizing the `using` keyword
+
+```
+class A {
+    A(string name,string place);
+};
+
+class B : public A {
+	using A::A; // Inherit A class's constructor
+};
+```
