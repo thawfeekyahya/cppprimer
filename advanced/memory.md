@@ -56,10 +56,13 @@ shared_ptr<int> iptr4(new int(3),(*deleter));
 
 ### unique_ptr 
 
-Unlike shared_ptr unique_ptr does **NOT** have function like `make_unique` instead we need to use regular `new` operator to initialize unique ptr
+~~Unlike shared_ptr unique_ptr does **NOT** have function like `make_unique` instead we need to use regular `new` operator to initialize unique ptr~~
+
+from C++ 14 onwards , C++ standard make_unique function to create unique pointers
 
 ```
-unique_ptr<int> iuniq(new int(2));
+unique_ptr<int> iuniq(new int(2)); // C++ 11
+unique_ptr<int> iuniq = make_unique<int>(5); // Version >= C++ 14
 ```
 
 Since there can be only one copy of unique pointer attempting to store unique pointer in another pointer throws error.
