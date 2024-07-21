@@ -54,11 +54,16 @@ an uppercase letter
 
 void pointer is a special pointer which can hold pointer of any type. But it cannot address the pointer object stored in it.Genarally void pointer is used to deal with memory as it is (memory).
 
+While void pointers cannot dereferenced direclty, we can type cast and then dereference it.
+
 ```
 
 int i=5, *ip = &i;  // creates integer i and interger pointer ip and assigns the address of i to ip
 void* pv = &i;  // creates a void pointer pv and assigns the address of i 
 pv = ip; // now pv (void pointer) is give new object (ip) to refer ie) assigned to ip pointer which in turn points to i 
+
+int* casted = static_cast<int*>(pv);
+cout<<*casted;
 
 ```
 
