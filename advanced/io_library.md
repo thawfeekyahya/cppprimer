@@ -1,7 +1,8 @@
 
 ## IO Headers
 
-\<iostream\> -> header for handling streams
+\<iostream\> -> header for handling file streams
+\<sstream\> -> header for handling string stream operations
 
 * fstream [class] -> Read / Write files
 * ofstream [class] -> Write files
